@@ -9,8 +9,8 @@ Welcome to the static web presence for **Connection Church NYC** — a polished,
 A minimal yet elegant static website designed to showcase a modern church brand and community experience.
 
 - `index.html` — the main landing page with hero messaging, navigation, and styled page sections.
-- `connection-church.html` — an alternate or supporting page for church details and additional content.
-- `astoria_terracotta_20260406_145101.png` — map image created using [terraink](https://github.com/bstef/terraink).
+- `archive/connection-church.html` — archived alternate page for church details and additional content.
+- `assets/astoria_terracotta_20260406_145101.png` — map image created using [terraink](https://github.com/bstef/terraink).
 - `LICENSE` — licensing details for the repository.
 
 ---

@@ -18,6 +18,11 @@
     body { font-family: 'DM Sans', sans-serif; background: var(--warm-white); color: var(--ink); font-size: 16px; line-height: 1.7; overflow-x: hidden; }
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 14px 48px; background: rgba(253,250,246,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); transition: box-shadow 0.3s; }
     nav.scrolled { box-shadow: 0 2px 24px rgba(28,25,21,0.08); }
+    .nav-right { display: flex; align-items: center; gap: 32px; }
+    .nav-socials { display: flex; align-items: center; gap: 14px; }
+    .nav-socials a { display: flex; align-items: center; justify-content: center; color: var(--muted); transition: color 0.2s; }
+    .nav-socials a:hover { color: var(--blue); }
+    .nav-socials svg { width: 17px; height: 17px; }
     .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
     .nav-logo img { width: 44px; height: 44px; object-fit: contain; }
     .nav-logo-text { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 600; color: var(--ink); letter-spacing: 0.01em; line-height: 1.2; }
@@ -26,7 +31,7 @@
     .nav-links a { font-size: 0.875rem; font-weight: 500; color: var(--muted); text-decoration: none; letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.2s; }
     .nav-links a:hover { color: var(--blue); }
     .hero { min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; padding: 120px 48px 80px; }
-    .hero-bg { position: absolute; inset: 0; background-size: 160%; background-position: 48% 50%; }
+    .hero-bg { position: absolute; inset: 0; background-size: 160%; background-position: 48% 72%; }
     .hero-overlay { position: absolute; inset: 0; z-index: 1; background: linear-gradient(108deg, rgba(253,250,246,0.97) 0%, rgba(253,250,246,0.95) 30%, rgba(253,250,246,0.82) 52%, rgba(253,250,246,0.45) 70%, rgba(253,250,246,0.15) 100%); }
     .hero-overlay-bottom { position: absolute; inset: 0; z-index: 1; background: linear-gradient(to bottom, rgba(253,250,246,0.15) 0%, transparent 20%, transparent 75%, rgba(253,250,246,0.8) 100%); }
     .hero-content { position: relative; z-index: 2; max-width: 660px; animation: fadeUp 0.9s ease both; }
@@ -139,6 +144,9 @@
     .footer-col h4 { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.14em; color: rgba(255,255,255,0.6); margin-bottom: 16px; font-weight: 500; }
     .footer-col p, .footer-col a { display: block; font-size: 0.875rem; color: rgba(255,255,255,0.45); text-decoration: none; margin-bottom: 8px; line-height: 1.6; transition: color 0.2s; }
     .footer-col a:hover { color: rgba(255,255,255,0.8); }
+    .footer-social-link { display: flex !important; align-items: center; gap: 8px; }
+    .footer-social-link svg { width: 15px; height: 15px; flex-shrink: 0; opacity: 0.6; }
+    .footer-social-link:hover svg { opacity: 1; }
     .footer-bottom { font-size: 0.8rem; text-align: center; color: rgba(255,255,255,0.3); }
     @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
     .reveal { opacity:0; transform:translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
@@ -154,6 +162,16 @@
     }
     .about-section-logo { display: block; width: 100%; margin-bottom: 20px; }
     .about-logo-divider { border: none; border-top: 1px solid var(--border); margin-bottom: 20px; }
+    .social-section { padding: 64px 48px; background: var(--ink); text-align: center; }
+    .social-section .section-label { display: block; margin-bottom: 16px; color: rgba(255,255,255,0.5); }
+    .social-section h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 600; color: white; margin-bottom: 12px; }
+    .social-section p { color: rgba(255,255,255,0.6); font-size: 0.9375rem; margin-bottom: 48px; }
+    .social-links-row { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; }
+    .social-link-card { display: flex; flex-direction: column; align-items: center; gap: 16px; padding: 36px 48px; border: 1px solid rgba(255,255,255,0.12); border-radius: 14px; text-decoration: none; color: white; background: rgba(255,255,255,0.06); transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s; min-width: 160px; }
+    .social-link-card:hover { border-color: var(--blue); background: rgba(45,106,138,0.2); box-shadow: 0 4px 32px rgba(45,106,138,0.25); transform: translateY(-3px); }
+    .social-link-card svg { width: 44px; height: 44px; }
+    .social-link-card span { font-size: 0.9rem; font-weight: 500; letter-spacing: 0.04em; }
+    @media (max-width: 600px) { .social-links-row { gap: 14px; } .social-link-card { padding: 28px 32px; min-width: 130px; } }
   </style>
 </head>
 <body>
@@ -162,6 +180,7 @@
     <img src="assets/logo-icon.svg" alt="Connection Church NYC logo" />
     <div class="nav-logo-text">Connection Church <span>NYC</span></div>
   </a>
+  <div class="nav-right">
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#story">Our Story</a></li>
@@ -169,6 +188,24 @@
     <li><a href="#isi">ISI Ministry</a></li>
     <li><a href="#queens">Queens Church</a></li>
   </ul>
+  <div class="nav-socials">
+    <a href="https://www.youtube.com/@connectionchurchnyc" target="_blank" rel="noopener" aria-label="YouTube">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>
+    </a>
+    <a href="https://www.instagram.com/connectionnyc/" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.9.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8C2.4 3.9 4 2.3 7.2 2.3c1.2-.1 1.6-.1 4.8-.1zm0-2.2C8.7 0 8.3 0 7.1.1 2.7.3.3 2.7.1 7.1 0 8.3 0 8.7 0 12s0 3.7.1 4.9C.3 21.3 2.7 23.7 7.1 23.9 8.3 24 8.7 24 12 24s3.7 0 4.9-.1c4.4-.2 6.8-2.6 7-7 .1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9C23.7 2.7 21.3.3 16.9.1 15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4zm0 10.2a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.8a1.4 1.4 0 1 0 0 2.8 1.4 1.4 0 0 0 0-2.8z"/></svg>
+    </a>
+    <a href="https://www.facebook.com/connectionnyc/" target="_blank" rel="noopener" aria-label="Facebook">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.1C24 5.4 18.6 0 12 0S0 5.4 0 12.1C0 18.1 4.4 23.1 10.1 24v-8.4H7.1v-3.5h3V9.7c0-3 1.8-4.7 4.5-4.7 1.3 0 2.7.2 2.7.2v3h-1.5c-1.5 0-2 .9-2 1.9v2.2h3.3l-.5 3.5h-2.8V24C19.6 23.1 24 18.1 24 12.1z"/></svg>
+    </a>
+    <a href="https://connectionnyc.blogspot.com/" target="_blank" rel="noopener" aria-label="Blog">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.5 3h-15A1.5 1.5 0 0 0 3 4.5v15A1.5 1.5 0 0 0 4.5 21h15a1.5 1.5 0 0 0 1.5-1.5v-15A1.5 1.5 0 0 0 19.5 3zm-11 4h7a.75.75 0 0 1 0 1.5h-7A.75.75 0 0 1 8.5 7zm0 3.5h7a.75.75 0 0 1 0 1.5h-7a.75.75 0 0 1 0-1.5zm0 3.5h4.5a.75.75 0 0 1 0 1.5H8.5a.75.75 0 0 1 0-1.5z"/></svg>
+    </a>
+    <a href="https://podcast.app/connection-church-nyc-sermons-p282311" target="_blank" rel="noopener" aria-label="Podcast">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v5a5 5 0 0 0 10 0V6a5 5 0 0 0-5-5zm3 10a3 3 0 0 1-6 0V6a3 3 0 0 1 6 0v5zm-3 4a7 7 0 0 1-7-7H3a9 9 0 0 0 8 8.94V19H8v2h8v-2h-3v-1.06A9 9 0 0 0 21 9h-2a7 7 0 0 1-7 7z"/></svg>
+    </a>
+  </div>
+  </div>
 </nav>
 
 <section class="hero" id="home">
@@ -280,6 +317,36 @@
         <h3>Joining with Queens Church</h3>
         <p>Connection Church NYC officially merged with Queens Church, marking the end of one chapter and the beautiful continuation of its legacy. The mission goes on through every person who carries the heartbeat of Connection Church NYC into whatever comes next.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="social-section reveal">
+  <div class="section-inner">
+    <span class="section-label">Stay Connected</span>
+    <h2>Follow Our Social Media</h2>
+    <p>Sermons, updates, and community — find us on your favorite platform.</p>
+    <div class="social-links-row">
+      <a href="https://www.youtube.com/@connectionchurchnyc" target="_blank" rel="noopener" class="social-link-card">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>
+        <span>YouTube</span>
+      </a>
+      <a href="https://www.instagram.com/connectionnyc/" target="_blank" rel="noopener" class="social-link-card">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.9.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8C2.4 3.9 4 2.3 7.2 2.3c1.2-.1 1.6-.1 4.8-.1zm0-2.2C8.7 0 8.3 0 7.1.1 2.7.3.3 2.7.1 7.1 0 8.3 0 8.7 0 12s0 3.7.1 4.9C.3 21.3 2.7 23.7 7.1 23.9 8.3 24 8.7 24 12 24s3.7 0 4.9-.1c4.4-.2 6.8-2.6 7-7 .1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9C23.7 2.7 21.3.3 16.9.1 15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4zm0 10.2a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.8a1.4 1.4 0 1 0 0 2.8 1.4 1.4 0 0 0 0-2.8z"/></svg>
+        <span>Instagram</span>
+      </a>
+      <a href="https://www.facebook.com/connectionnyc/" target="_blank" rel="noopener" class="social-link-card">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.1C24 5.4 18.6 0 12 0S0 5.4 0 12.1C0 18.1 4.4 23.1 10.1 24v-8.4H7.1v-3.5h3V9.7c0-3 1.8-4.7 4.5-4.7 1.3 0 2.7.2 2.7.2v3h-1.5c-1.5 0-2 .9-2 1.9v2.2h3.3l-.5 3.5h-2.8V24C19.6 23.1 24 18.1 24 12.1z"/></svg>
+        <span>Facebook</span>
+      </a>
+      <a href="https://connectionnyc.blogspot.com/" target="_blank" rel="noopener" class="social-link-card">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.5 3h-15A1.5 1.5 0 0 0 3 4.5v15A1.5 1.5 0 0 0 4.5 21h15a1.5 1.5 0 0 0 1.5-1.5v-15A1.5 1.5 0 0 0 19.5 3zm-11 4h7a.75.75 0 0 1 0 1.5h-7A.75.75 0 0 1 8.5 7zm0 3.5h7a.75.75 0 0 1 0 1.5h-7a.75.75 0 0 1 0-1.5zm0 3.5h4.5a.75.75 0 0 1 0 1.5H8.5a.75.75 0 0 1 0-1.5z"/></svg>
+        <span>Blog</span>
+      </a>
+      <a href="https://podcast.app/connection-church-nyc-sermons-p282311" target="_blank" rel="noopener" class="social-link-card">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v5a5 5 0 0 0 10 0V6a5 5 0 0 0-5-5zm3 10a3 3 0 0 1-6 0V6a3 3 0 0 1 6 0v5zm-3 4a7 7 0 0 1-7-7H3a9 9 0 0 0 8 8.94V19H8v2h8v-2h-3v-1.06A9 9 0 0 0 21 9h-2a7 7 0 0 1-7 7z"/></svg>
+        <span>Podcast</span>
+      </a>
     </div>
   </div>
 </section>
@@ -443,6 +510,29 @@
         <a href="https://internationalstudents.org/team/mcghees/" target="_blank" rel="noopener">Daniel &amp; Kari McGhee &rarr;</a>
         <p>NYC Area Director &amp; Campus Staff</p>
         <a href="https://internationalstudents.org" target="_blank" rel="noopener">internationalstudents.org</a>
+      </div>
+      <div class="footer-col">
+        <h4>Follow Along</h4>
+        <a href="https://www.youtube.com/@connectionchurchnyc" target="_blank" rel="noopener" class="footer-social-link">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>
+          YouTube
+        </a>
+        <a href="https://www.instagram.com/connectionnyc/" target="_blank" rel="noopener" class="footer-social-link">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.9.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8C2.4 3.9 4 2.3 7.2 2.3c1.2-.1 1.6-.1 4.8-.1zm0-2.2C8.7 0 8.3 0 7.1.1 2.7.3.3 2.7.1 7.1 0 8.3 0 8.7 0 12s0 3.7.1 4.9C.3 21.3 2.7 23.7 7.1 23.9 8.3 24 8.7 24 12 24s3.7 0 4.9-.1c4.4-.2 6.8-2.6 7-7 .1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9C23.7 2.7 21.3.3 16.9.1 15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4zm0 10.2a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.8a1.4 1.4 0 1 0 0 2.8 1.4 1.4 0 0 0 0-2.8z"/></svg>
+          Instagram
+        </a>
+        <a href="https://www.facebook.com/connectionnyc/" target="_blank" rel="noopener" class="footer-social-link">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.1C24 5.4 18.6 0 12 0S0 5.4 0 12.1C0 18.1 4.4 23.1 10.1 24v-8.4H7.1v-3.5h3V9.7c0-3 1.8-4.7 4.5-4.7 1.3 0 2.7.2 2.7.2v3h-1.5c-1.5 0-2 .9-2 1.9v2.2h3.3l-.5 3.5h-2.8V24C19.6 23.1 24 18.1 24 12.1z"/></svg>
+          Facebook
+        </a>
+        <a href="https://connectionnyc.blogspot.com/" target="_blank" rel="noopener" class="footer-social-link">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.5 3h-15A1.5 1.5 0 0 0 3 4.5v15A1.5 1.5 0 0 0 4.5 21h15a1.5 1.5 0 0 0 1.5-1.5v-15A1.5 1.5 0 0 0 19.5 3zm-11 4h7a.75.75 0 0 1 0 1.5h-7A.75.75 0 0 1 8.5 7zm0 3.5h7a.75.75 0 0 1 0 1.5h-7a.75.75 0 0 1 0-1.5zm0 3.5h4.5a.75.75 0 0 1 0 1.5H8.5a.75.75 0 0 1 0-1.5z"/></svg>
+          Blog
+        </a>
+        <a href="https://podcast.app/connection-church-nyc-sermons-p282311" target="_blank" rel="noopener" class="footer-social-link">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1a5 5 0 0 0-5 5v5a5 5 0 0 0 10 0V6a5 5 0 0 0-5-5zm3 10a3 3 0 0 1-6 0V6a3 3 0 0 1 6 0v5zm-3 4a7 7 0 0 1-7-7H3a9 9 0 0 0 8 8.94V19H8v2h8v-2h-3v-1.06A9 9 0 0 0 21 9h-2a7 7 0 0 1-7 7z"/></svg>
+          Podcast
+        </a>
       </div>
 
     </div>

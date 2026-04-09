@@ -1,59 +1,79 @@
 # Connection Church NYC
 
-Welcome to the static web presence for **Connection Church NYC** — a polished, boutique landing page built with thoughtful typography, warm color tones, and refined layout details.
+A legacy website for **Connection Church NYC** — a church rooted in Astoria, Queens from 2011 to 2024. Built as a polished static page honoring the community, mission, and story of Connection Church NYC, whose legacy continues through [Queens Church](https://www.qns.church).
 
 ---
 
-## ✨ What this repo contains
-
-A minimal yet elegant static website designed to showcase a modern church brand and community experience.
-
-- `index.html` — the main landing page with hero messaging, navigation, and styled page sections.
-- `archive/connection-church.html` — archived alternate page for church details and additional content.
-- `assets/astoria_terracotta_20260406_145101.png` — map image created using [terraink](https://github.com/bstef/terraink).
-- `LICENSE` — licensing details for the repository.
+![Connection Church NYC — Hero](assets/screenshot-hero.png)
 
 ---
 
-## 🎨 Design & Experience
+## About
 
-This project is handcrafted as a standalone static page with:
+Connection Church NYC was founded in 2011 by the McGhee and Mayberry families in Astoria, Queens — one of the most diverse neighborhoods in the world. For over 13 years the church built lasting faith, community, and mission in the heart of New York City.
 
-- inline CSS for crisp, self-contained styling
-- a responsive hero section that feels immersive
-- polished typography using Google Fonts
-- soft, neutral palette with warm accents for a community-forward look
+In 2024, Connection Church NYC officially merged with Queens Church, continuing the same mission under a new name.
+
+This site serves as a permanent archive and tribute to that legacy.
 
 ---
 
-## 🚀 Local preview
+## What's on the site
 
-Open the site directly or serve it locally for the full experience:
+| Section | Description |
+|---|---|
+| **Hero** | Full-screen map of Astoria with the church's core message |
+| **A Church for the City** | Who Connection Church NYC was and what it stood for |
+| **Important Update** | The 2024 announcement of the merge with Queens Church |
+| **Our Story** | A visual timeline from 2011 founding through 2024 |
+| **Find Us at Queens Church** | Service times, address, and directions |
+| **Social Media** | Links to YouTube, Instagram, Facebook, Blog, and Podcast |
+| **Church Partners** | Organizations that supported the mission |
+| **Leadership** | The Mayberrys, McGhees, and ISI Ministry team |
+| **Footer** | Full archive links and legacy credit |
+
+---
+
+## Social & Media
+
+- YouTube: [@connectionchurchnyc](https://www.youtube.com/@connectionchurchnyc)
+- Instagram: [@connectionnyc](https://www.instagram.com/connectionnyc/)
+- Facebook: [connectionnyc](https://www.facebook.com/connectionnyc/)
+- Blog: [connectionnyc.blogspot.com](https://connectionnyc.blogspot.com/)
+- Podcast: [Connection Church NYC Sermons](https://podcast.app/connection-church-nyc-sermons-p282311)
+
+---
+
+## Tech
+
+- Pure HTML + CSS — no frameworks, no build tools, no dependencies
+- All styling inline in `index.html`
+- Responsive layout with mobile breakpoints
+- SVG logo (`assets/logo-icon.svg`) for crisp rendering at any size
+- Terracotta map of Astoria created with [terraink](https://github.com/bstef/terraink)
+
+---
+
+## Local preview
 
 ```bash
 python3 -m http.server 8000
 ```
 
-Then visit:
+Then open `http://localhost:8000` — or just open `index.html` directly in your browser.
 
-```text
-http://localhost:8000
+---
+
+## File structure
+
 ```
-
-Or simply open `index.html` in your browser.
-
----
-
-## 🧩 Why this repo is useful
-
-- Great for quick church or community landing page demos
-- Easy to fork and customize as a static brochure site
-- No build tools, frameworks, or dependencies required
-
----
-
-## 💡 Notes
-
-- Everything is built with plain HTML and CSS.
-- Styling is embedded directly in the HTML files for fast edits.
-- This repo is ideal for a simple static site prototype or brand-focused homepage.
+connectionchurchnyc/
+├── index.html                          # Main site
+├── assets/
+│   ├── logo-icon.svg                   # SVG church logo
+│   ├── Website+Logo.png                # Full logo lockup
+│   ├── astoria_terracotta_20260406_145101.png   # Astoria map (terraink)
+│   └── screenshot-hero.png             # Site preview
+└── archive/
+    └── connection-church.html          # Archived alternate page
+```

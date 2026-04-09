@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- Outer ring: full circle -->
+  <circle cx="100" cy="100" r="88" fill="none" stroke="#2d6e96" stroke-width="11"/>
+  <!-- Bold C letterform: outer arc CCW (large), line to inner bottom, inner arc CW (large), close -->
+  <path d="M 144,62 A 57,57 0 1,0 144,138 L 127,122 A 35,35 0 1,1 127,78 Z"
+        fill="#2d6e96"/>
+</svg>

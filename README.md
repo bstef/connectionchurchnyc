@@ -94,3 +94,12 @@ To regenerate the checked-in map, run `python3 scripts/build-astoria-map.py`
 with Pillow installed. This is an optional maintenance step; the website itself
 has no build or Python dependency. The script downloads only the tiles needed
 for this one map. Keep the visible OpenStreetMap attribution when reusing it.
+
+## Appearance
+
+The site follows the device’s light or dark appearance until a visitor uses the
+moon/sun button in the navigation. Their choice is saved locally for future visits.
+The toggle supports keyboard activation and exposes its state to screen readers.
+Storage restrictions do not prevent switching themes. Dark mode adjusts the hero,
+map, navigation, cards, and light sections while retaining the warm Queens Church
+section and dark announcement, social, and footer treatments.

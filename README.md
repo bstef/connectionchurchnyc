@@ -22,7 +22,7 @@ This site serves as a permanent archive and tribute to that legacy.
 
 | Section | Description |
 |---|---|
-| **Hero** | Full-screen map of Astoria with the church's core message |
+| **Hero** | Labeled Astoria map with the former church location and core message |
 | **A Church for the City** | Who Connection Church NYC was and what it stood for |
 | **Important Update** | The 2024 announcement of the merge with Queens Church |
 | **Our Story** | A visual timeline from 2011 founding through 2024 |
@@ -50,7 +50,8 @@ This site serves as a permanent archive and tribute to that legacy.
 - All styling inline in `index.html`
 - Responsive layout with mobile breakpoints
 - SVG logo (`assets/logo-icon.svg`) for crisp rendering at any size
-- Terracotta map of Astoria created with [terraink](https://github.com/bstef/terraink)
+- Hero street map © [OpenStreetMap contributors](https://www.openstreetmap.org/copyright), served as a local WebP with no runtime map service or API key
+- Original terracotta map in the About section created with [terraink](https://github.com/bstef/terraink)
 
 ---
 
@@ -73,7 +74,23 @@ connectionchurchnyc/
 │   ├── logo-icon.svg                   # SVG church logo
 │   ├── Website+Logo.png                # Full logo lockup
 │   ├── astoria_terracotta_20260406_145101.png   # Astoria map (terraink)
+│   ├── astoria-location-map.webp       # Georeferenced hero street map
 │   └── screenshot-hero.png             # Site preview
+├── scripts/
+│   └── build-astoria-map.py             # Optional map regeneration
 └── archive/
     └── connection-church.html          # Archived alternate page
 ```
+
+## Hero map
+
+The blue pin marks the former Connection Church location provided in Google Maps
+(**40.7567285, -73.9053766**), not the current Queens Church meeting location.
+The neighborhood map includes Astoria Park and Ditmars Boulevard to the north.
+The image and pin share a Web Mercator projection; their alignment is preserved
+on desktop and mobile by scaling the whole map without cropping.
+
+To regenerate the checked-in map, run `python3 scripts/build-astoria-map.py`
+with Pillow installed. This is an optional maintenance step; the website itself
+has no build or Python dependency. The script downloads only the tiles needed
+for this one map. Keep the visible OpenStreetMap attribution when reusing it.

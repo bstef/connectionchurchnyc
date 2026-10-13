@@ -246,6 +246,8 @@
     .social-card:focus-visible, .footer-social:focus-visible { outline: 3px solid rgb(var(--social-rgb)); outline-offset: 4px; }
     @media (max-width: 768px) { .social-section { padding: 56px 24px; } }
     @media (max-width: 380px) { .social-grid { grid-template-columns: 1fr; } }
+    .sermon-mobile { display:none; color:var(--blue); text-decoration:none; font-size:.85rem; font-weight:600; }
+    @media(max-width:900px) { .sermon-mobile { display:inline-block; margin-left:auto; margin-right:16px; } }
   </style>
 </head>
 <body>
@@ -254,8 +256,9 @@
     <img src="assets/logo-icon.svg" alt="Connection Church NYC logo" />
     <div class="nav-logo-text">Connection Church <span>NYC</span></div>
   </a>
-  <div class="nav-actions">
+  <div class="nav-actions"><a class="sermon-mobile" href="/sermons/">Sermons</a>
   <ul class="nav-links">
+    <li><a href="/sermons/">Sermons</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#story">Our Story</a></li>
     <li><a href="#leadership">Leadership</a></li>
@@ -564,10 +567,10 @@
   </a>
 
   <!-- Podcast -->
-  <a class="social-card social-podcast" href="https://podcast.app/connection-church-nyc-sermons-p282311" target="_blank" rel="noopener">
+  <a class="social-card social-podcast" href="/sermons/">
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="11" r="3"/><path d="M6.343 16.657a8 8 0 1 1 11.314 0"/><path d="M3.515 19.485a12 12 0 1 1 16.97 0"/><line x1="12" y1="21" x2="12" y2="23"/></svg>
     <div style="text-align:center;">
-      <div style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:white;margin-bottom:4px;">Podcast</div>
+      <div style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:white;margin-bottom:4px;">Sermon Archive</div>
       <div style="font-size:0.75rem;color:rgba(255,255,255,0.45);letter-spacing:0.06em;">NYC Sermons Archive</div>
     </div>
   </a>
@@ -626,7 +629,7 @@
       <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
     </a>
     <!-- Podcast -->
-    <a class="footer-social social-podcast" aria-label="Podcast" href="https://podcast.app/connection-church-nyc-sermons-p282311" target="_blank" rel="noopener" title="Podcast">
+    <a class="footer-social social-podcast" aria-label="Sermon archive" href="/sermons/" title="Sermon archive">
       <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="11" r="3"/><path d="M6.343 16.657a8 8 0 1 1 11.314 0"/><path d="M3.515 19.485a12 12 0 1 1 16.97 0"/><line x1="12" y1="21" x2="12" y2="23"/></svg>
     </a>
   </div>

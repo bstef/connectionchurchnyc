@@ -1,0 +1,20 @@
+{
+  "name": "connectionchurchnyc",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "npm run build && wrangler pages dev dist",
+    "check": "wrangler types && tsc --noEmit",
+    "test": "node --test tests/worker.test.mjs tests/publishing.test.mjs",
+    "db:local": "wrangler d1 migrations apply DB --local"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261008.1",
+    "@types/node": "^26.6.4",
+    "esbuild": "^0.28.2",
+    "miniflare": "^5.20261006.1-alpha",
+    "typescript": "^7.0.2",
+    "wrangler": "^4.149.0"
+  }
+}

@@ -1,0 +1,2 @@
+ALTER TABLE episodes ADD COLUMN speaker TEXT NOT NULL DEFAULT '';
+ALTER TABLE episodes ADD COLUMN speaker_source TEXT NOT NULL DEFAULT '';

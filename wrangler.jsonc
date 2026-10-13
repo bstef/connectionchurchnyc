@@ -1,0 +1,17 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "connectionchurchnyc",
+  "pages_build_output_dir": "./dist",
+  "compatibility_date": "2026-10-13",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "connection-sermons",
+      "migrations_dir": "migrations",
+      "database_id": "80bc476a-bd24-41b2-90ab-dbfcdb05803e"
+    }
+  ]
+}

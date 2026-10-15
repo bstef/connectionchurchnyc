@@ -16,3 +16,7 @@
 .archive-card .source-link{display:inline-block;color:var(--accent);font-size:14px;line-height:1.6;text-underline-offset:3px}
 #archive-count{color:var(--muted);font-size:14px;line-height:1.6;margin-bottom:8px}
 @media(max-width:600px){.archive-card{padding:22px 0}.archive-card h3{font-size:1.05rem}.catalog-archive .calendar-intro{padding-top:24px}}
+
+/* Also support an earlier cached archive renderer while it refreshes. */
+#archive-results>.card{display:block;grid-template-columns:minmax(0,1fr);min-width:0}
+#archive-results>.card>div{width:100%;min-width:0;max-width:78ch;overflow-wrap:anywhere}

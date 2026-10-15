@@ -1,136 +1,77 @@
+<div align="center">
+
+<img src="assets/logo-icon.svg" alt="Connection Church NYC" width="72" />
+
 # Connection Church NYC
 
-A legacy website for **Connection Church NYC** — a church rooted in Astoria, Queens from 2011 to 2024. Built as a polished static page honoring the community, mission, and story of Connection Church NYC, whose legacy continues through [Queens Church](https://www.qns.church).
+**Remembering the community. Preserving the messages. Continuing the mission.**
 
----
+A church legacy website and searchable sermon archive from Astoria, Queens.
 
-![Connection Church NYC — Hero](assets/screenshot-hero.png)
+[Visit the website](https://connectionnyc.net/) · [Explore sermons](https://connectionnyc.net/sermons/) · [Browse the calendar](https://connectionnyc.net/sermons/calendar/)
 
----
+</div>
 
-## About
+![Connection Church NYC homepage preview](assets/screenshot-hero.png)
 
-Connection Church NYC was founded in 2011 by the McGhee and Mayberry families in Astoria, Queens — one of the most diverse neighborhoods in the world. For over 13 years the church built lasting faith, community, and mission in the heart of New York City.
+## A lasting home for Connection’s story
 
-In 2024, Connection Church NYC officially merged with Queens Church, continuing the same mission under a new name.
+Connection Church NYC began in Astoria in 2011, founded by the McGhee and Mayberry families. In 2024, the church merged with [Queens Church](https://www.qns.church/), where the mission continues.
 
-This site serves as a permanent archive and tribute to that legacy.
+This website preserves Connection’s history, celebrates the people behind its ministry, and helps visitors return to the sermon recordings that remain available on YouTube.
 
----
+## Explore the website
 
-## What's on the site
+| Experience | What you’ll find |
+| :--- | :--- |
+| [Church home](https://connectionnyc.net/) | Connection’s story, an Astoria neighborhood map, the Queens Church update, social links, and ministry partners. |
+| [Sermon library](https://connectionnyc.net/sermons/) | Available YouTube recordings, title and description search, and spoken-word search for messages with imported transcripts. |
+| [Sermon calendar](https://connectionnyc.net/sermons/calendar/) | Messages organized by date to revisit a Sunday or explore a month and year. |
+| [Leadership](https://connectionnyc.net/#leadership) | Ministry portraits and updates for Daniel and Kari McGhee and Larry and Lindsey Mayberry, with links to ISI, Queens Church, and MNYBA. |
 
-| Section | Description |
-|---|---|
-| **Hero** | Labeled Astoria map with the former church location and core message |
-| **A Church for the City** | Who Connection Church NYC was and what it stood for |
-| **Important Update** | The 2024 announcement of the merge with Queens Church |
-| **Our Story** | A visual timeline from 2011 founding through 2024 |
-| **Find Us at Queens Church** | Service times, address, and directions |
-| **Social Media** | Links to YouTube, Instagram, Facebook, Blog, and Podcast |
-| **Church Partners** | Organizations that supported the mission |
-| **Leadership** | The Mayberrys, McGhees, and ISI Ministry team |
-| **Footer** | Full archive links and legacy credit |
+Both the homepage and sermon archive support responsive layouts and light and dark themes. A visitor’s theme preference is saved locally.
 
----
+## Sermon archive at a glance
 
-## Social & Media
+| Catalog snapshot | Status |
+| :--- | :--- |
+| **28 messages** | Public library entries with matched YouTube recordings. |
+| **410 records** | Preserved metadata without matched recordings, kept in an unlisted catalog. |
+| **438 total records** | Historical podcast catalog spanning 2014–2024. |
+| **1 caption pilot** | *I Believe #11 — Repent and Believe*: 934 automatic caption segments, grouped into 41 overlapping search passages. |
 
-- YouTube: [@connectionchurchnyc](https://www.youtube.com/@connectionchurchnyc)
-- Instagram: [@connectionnyc](https://www.instagram.com/connectionnyc/)
-- Facebook: [connectionnyc](https://www.facebook.com/connectionnyc/)
-- Blog: [connectionnyc.blogspot.com](https://connectionnyc.blogspot.com/)
-- Podcast: [Connection Church NYC Sermons](https://podcast.app/connection-church-nyc-sermons-p282311)
+These counts describe the current checked-in catalog and change as recordings are matched or captions are imported.
 
----
+**What search covers:** titles and descriptions are searchable across the public library. Spoken-word search is available for imported transcripts; timestamp links follow the YouTube recording’s timeline. Automatic captions are unreviewed—check wording, names, Scripture references, and timing against the video before quoting.
 
-## Tech
+The original Buzzsprout feed was empty when checked, and tested saved audio URLs returned 404. Podcast listings preserve useful metadata but do not establish that playable audio is recoverable. Descriptions are kept as metadata, never presented as transcripts. YouTube matches use normalized titles; matching titles alone does not establish identical edits or timestamps.
 
-- Pure HTML + CSS — no frameworks, no build tools, no dependencies
-- All styling inline in `index.html`
-- Responsive layout with mobile breakpoints
-- SVG logo (`assets/logo-icon.svg`) for crisp rendering at any size
-- Hero street map © [OpenStreetMap contributors](https://www.openstreetmap.org/copyright), served as a local WebP with no runtime map service or API key
-- Original terracotta map in the About section created with [terraink](https://github.com/bstef/terraink)
+<details>
+<summary><strong>How the unlisted catalog works</strong></summary>
 
----
+The [preserved catalog](https://connectionnyc.net/sermons/catalog-archive/) contains the 410 records without matched YouTube recordings. It supports metadata search and stays out of the public navigation, library, calendar, and rendered search results.
 
-## Local preview
+The page is marked `noindex,nofollow,noarchive`. **It is unlisted, not password protected.** Anyone with the URL can open it, and the underlying D1 read APIs still expose the full historical metadata catalog.
 
-```bash
-python3 -m http.server 8000
-```
+All 438 records remain in the source JSON and D1 database. Adding a verified `youtube_url` to a source record and rebuilding moves that record into the public library automatically.
 
-Then open `http://localhost:8000` — or just open `index.html` directly in your browser.
+</details>
 
----
+## Built with
 
-## File structure
+- **HTML, CSS, and browser JavaScript** for the homepage and sermon interfaces.
+- **Cloudflare Pages** for static hosting, with Pages Functions serving `/api/sermons/*`.
+- **Cloudflare D1** for catalog metadata, transcript passages, and spoken-word search.
+- **Node.js** for building the published files; **TypeScript** for the API.
+- **Locally hosted fonts and map assets**, including an OpenStreetMap-based hero map.
 
-```
-connectionchurchnyc/
-├── index.html                          # Main site
-├── assets/
-│   ├── logo-icon.svg                   # SVG church logo
-│   ├── Website+Logo.png                # Full logo lockup
-│   ├── astoria_terracotta_20260406_145101.png   # Astoria map (terraink)
-│   ├── astoria-location-map.webp       # Georeferenced hero street map
-│   └── screenshot-hero.png             # Site preview
-├── scripts/
-│   └── build-astoria-map.py             # Optional map regeneration
-└── archive/
-    └── connection-church.html          # Archived alternate page
-```
+The archive adapts the Skyline Echo sermon experience for Connection. It uses its own `connection-sermons` database and does not query or modify Skyline’s database.
 
-## Hero map
+**Builds and deployments do not run transcription, paid AI calls, or scheduled jobs.** Contextual search requires additional configuration; this version falls back to keyword search.
 
-The blue pin marks the former Connection Church location provided in Google Maps
-(**40.7567285, -73.9053766**), not the current Queens Church meeting location.
-The neighborhood map includes Astoria Park and Ditmars Boulevard to the north.
-The image and pin share a Web Mercator projection; their alignment is preserved
-on desktop and mobile by scaling the whole map without cropping.
+## Run locally
 
-To regenerate the checked-in map, run `python3 scripts/build-astoria-map.py`
-with Pillow installed. This is an optional maintenance step; the website itself
-has no build or Python dependency. The script downloads only the tiles needed
-for this one map. Keep the visible OpenStreetMap attribution when reusing it.
-
-## Appearance
-
-The site follows the device’s light or dark appearance until a visitor uses the
-moon/sun button in the navigation. Their choice is saved locally for future visits.
-The toggle supports keyboard activation and exposes its state to screen readers.
-Storage restrictions do not prevent switching themes. Dark mode adjusts the hero,
-map, navigation, cards, and light sections while retaining the warm Queens Church
-section and dark announcement, social, and footer treatments.
-
-## Connection Echo sermon archive
-
-`/sermons/` adds a Connection-branded version of Skyline Echo’s library, calendar,
-keyword search, optional contextual search, themes, and timestamp links to this
-existing website. The homepage navigation and podcast links open the archive.
-The original church page is preserved.
-
-The catalog snapshot contains **438 episodes (2014–2024)** from the supplied
-[podcast.app listing](https://podcast.app/connection-church-nyc-sermons-p282311).
-Its original Buzzsprout feed currently has no episodes; the checked newest MP3
-returns 404. Saved descriptions are metadata, never transcript passages.
-Twenty-eight exact normalized-title matches link to the church’s surviving
-YouTube videos. Matching titles identifies candidate equivalents; it does not
-establish that video and podcast edits or timestamps are identical.
-
-A pilot imports English automatic YouTube captions for **I Believe #11 — Repent
-and Believe**: 934 segments grouped into 41 overlapping search passages.
-Caption wording is unreviewed and retained as exported. Search links use the
-**YouTube video timeline**, never the broken podcast MP3 timeline. Verify names,
-Scripture references, wording, and timing against the recording before quoting.
-
-Catalog search works from a checked-in JSON snapshot even without a backend.
-Spoken-word search uses Cloudflare Pages Functions and a separate D1 database,
-`connection-sermons`; it never queries or modifies the Skyline database.
-No paid AI calls, transcription jobs, or schedules run during builds/deployment.
-
-### Develop and deploy
+Install Node.js with npm. Cloudflare account access is required for remote database operations and deployment.
 
 ```sh
 npm ci
@@ -138,58 +79,102 @@ npm run db:local
 npm run dev
 ```
 
-Open the printed local URL followed by `/sermons/`. `npm test` checks actual D1
-search, timestamped results, transcript replacement, protected publishing,
-validation, and retries. `npm run check` checks Pages/Worker types.
+Open the local URL printed by Wrangler. The homepage is at `/`; the sermon library is at `/sermons/`.
 
-For the existing Cloudflare Pages project `connectionchurchnyc`, set the build
-command to `npm run build` and the output directory to `dist`. The checked-in
-Wrangler config supplies the D1 binding. Apply migrations before deployment:
+| Command | Purpose |
+| :--- | :--- |
+| `npm run dev` | Build and run the site with local Pages Functions. |
+| `npm run build` | Generate `dist/`, split public and unlisted catalog records, and version sermon CSS/JS URLs. |
+| `npm run db:local` | Apply D1 migrations to the local development database. |
+| `npm test` | Exercise D1 search, timestamped results, transcript publishing, validation, and retries. |
+| `npm run check` | Generate Cloudflare binding types and run TypeScript checks. |
+
+For a static-only preview, run `npm run build`, then `python3 -m http.server 8000 --directory dist`. Catalog browsing works from the generated JSON; backend transcript search requires Pages Functions and D1.
+
+## Deploy to Cloudflare Pages
+
+The existing Pages project is **`connectionchurchnyc`**. Its build command is `npm run build` and its output directory is `dist`. The D1 binding is defined in [`wrangler.jsonc`](wrangler.jsonc).
+
+After authenticating Wrangler to the correct Cloudflare account:
 
 ```sh
 npx wrangler d1 migrations apply DB --remote
 npm run build
-npx wrangler pages deploy dist --project-name connectionchurchnyc
+npx wrangler pages deploy dist --project-name connectionchurchnyc --branch main
 ```
 
-`dist/_routes.json` limits Functions to `/api/sermons/*`; the rest of the church
-site continues to serve as static files. Preview branches use the same catalog
-D1 binding; avoid testing writable publishing against that database.
+Apply new migrations before deploying changes that depend on them. Commit new numbered migrations rather than editing migrations that have already been applied.
 
-### Add captions and recovered recordings
+The generated `dist/_routes.json` limits Functions to `/api/sermons/*`; other pages are served as static files. Preview deployments use the same configured D1 binding, so writable publishing tests should use a separate database.
 
-`scripts/import-podcast-catalog.py` refreshes metadata from public listing pages
-and preserves existing video-source annotations. It does not fetch audio.
-For another verified matching video, add its `youtube_url` to the relevant
-catalog record, then import a timestamped browser-exported caption file:
+## Project map
+
+```text
+connectionchurchnyc/
+├── index.html                 # Church homepage and inline homepage styles
+├── assets/
+│   ├── leaders/               # Ministry portraits and source credits
+│   ├── sermons/               # Source catalog, scripts, styles, and fonts
+│   └── …                      # Church logos, maps, and homepage preview
+├── sermons/
+│   ├── index.html             # Public sermon library and search
+│   ├── calendar/              # Date-based sermon browsing
+│   └── catalog-archive/       # Unlisted preserved catalog
+├── functions/api/sermons/     # Cloudflare Pages API entry point
+├── worker/                    # Search and transcript publishing logic
+├── migrations/                # D1 schema and content migrations
+├── scripts/                   # Build, catalog, captions, and map tools
+├── tests/                     # Search and publishing tests
+├── archive/                   # Preserved alternate church page
+├── wrangler.jsonc             # Pages and database configuration
+└── dist/                      # Generated deployment output
+```
+
+## Maintaining the archive
+
+<details>
+<summary><strong>Match recordings and import captions</strong></summary>
+
+[`scripts/import-podcast-catalog.py`](scripts/import-podcast-catalog.py) refreshes metadata from public listing pages and preserves existing video-source annotations. It does not download audio.
+
+For a verified matching video, add its `youtube_url` to the corresponding record in [`assets/sermons/catalog.json`](assets/sermons/catalog.json). Then import a timestamped browser-exported caption file:
 
 ```sh
 python3 scripts/import-youtube-captions.py EPISODE_ID VIDEO_ID captions.txt migrations/0007_next_caption_import.sql
 ```
 
-The importer verifies the video ID and matching catalog source, retains original
-caption words, validates ordering, and creates an idempotent per-episode import.
-Commit new numbered migrations rather than editing applied migrations.
+Choose the next unused migration number. The importer checks the video ID against the catalog source, retains the original caption words, validates ordering, and generates an idempotent per-episode import. Apply the migration to the intended database and rebuild the site.
 
-The inherited protected endpoint `POST /api/sermons/admin/transcripts` can accept
-real timestamped JSON from a future Groq/n8n runner or reviewed transcript. It is
-closed until a server-side `TRANSCRIPT_PUBLISH_TOKEN` is configured. Payloads
-include `episode` metadata, `segments` (`start`, `end`, `text`), and optional
-`dry_run` (defaults to true). Synthetic samples can only be validated. Publication
-is transactional and retry-safe. Keep credentials out of Git and frontend code.
+</details>
 
-Meaning search requires a separately configured Vectorize index, indexed
-embeddings, and a server-side OpenAI key. Until configured, the app explicitly
-falls back to keyword search. These resources are not enabled in this version.
+<details>
+<summary><strong>Publish transcripts or enable contextual search</strong></summary>
 
-### Public YouTube library and unlisted catalog
+The protected `POST /api/sermons/admin/transcripts` endpoint accepts timestamped JSON from a reviewed transcript or a future transcription runner. It remains closed until a server-side `TRANSCRIPT_PUBLISH_TOKEN` is configured.
 
-The build now includes only records with a matched `youtube_url` in the public
-`/assets/sermons/catalog.json`. The library, calendar, counts, and rendered search
-results use that public set. All 438 records remain intact in the source catalog
-and D1; nothing is deleted. The other 410 records are searchable on the unlisted
-`/sermons/catalog-archive/` page, which is absent from site navigation and marked
-`noindex,nofollow,noarchive`. It is an unlisted maintenance reference, not an
-authenticated admin page. The underlying D1 read APIs continue to expose the full
-historical metadata catalog. Adding a verified YouTube URL and rebuilding moves
-an episode back into the public library automatically.
+Payloads include `episode` metadata, `segments` containing `start`, `end`, and `text`, and optional `dry_run` (which defaults to `true`). Synthetic samples can only be validated. Publication is transactional and retry-safe. Keep credentials out of Git and frontend code.
+
+Meaning-based search requires a separately configured Vectorize index, indexed embeddings, and a server-side OpenAI key. Those resources are not enabled in this version; keyword search remains available.
+
+</details>
+
+<details>
+<summary><strong>Update maps and photography</strong></summary>
+
+The homepage hero map marks Connection’s former location at **40.7567285, -73.9053766**, rather than the current Queens Church meeting location. Its image and pin share a Web Mercator projection and scale together without cropping.
+
+To regenerate the checked-in map, run `python3 scripts/build-astoria-map.py` with Pillow installed. This optional maintenance tool downloads only the required map tiles. Retain the visible [OpenStreetMap attribution](https://www.openstreetmap.org/copyright). The original terracotta Astoria map was created with [terraink](https://github.com/bstef/terraink).
+
+Leadership photos come from official ministry websites. See [`assets/leaders/README.md`](assets/leaders/README.md) for image sources and credits.
+
+</details>
+
+## Ministry & community links
+
+[Queens Church](https://www.qns.church/) · [The McGhees’ ISI ministry](https://internationalstudents.org/team/mcghees/) · [MNYBA](https://www.mnyba.org/about/)
+
+[YouTube](https://www.youtube.com/@connectionchurchnyc) · [Instagram](https://www.instagram.com/connectionnyc/) · [Facebook](https://www.facebook.com/connectionnyc/) · [Original blog](https://connectionnyc.blogspot.com/)
+
+## License & credits
+
+Repository code is provided under [GNU GPL v3](LICENSE). Ministry photography and other third-party assets retain their respective rights and attributions. Bundled fonts include their own license files in `assets/sermons/fonts/`.

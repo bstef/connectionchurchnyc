@@ -3,3 +3,16 @@
 .brand{gap:12px;text-decoration:none}.connection-brand{font-family:'Instrument Serif',serif;font-size:29px;line-height:1}.connection-brand small{display:block;font-family:'Instrument Sans',sans-serif;font-size:9px;letter-spacing:.18em;margin-top:7px;color:var(--muted)}
 .hero{padding-bottom:32px}.hero .eyebrow{margin-bottom:18px}.hero h1{max-width:780px}.archive-notice{border:1px solid var(--line);border-left:3px solid #b87748;background:var(--surface);padding:22px 26px;border-radius:12px;margin:0 0 34px;color:var(--muted);font-size:14px}.archive-notice strong{color:var(--ink);font-size:16px}.archive-notice p{margin:8px 0}.archive-notice a{color:var(--accent)}.card a.source-link{color:var(--accent);font-size:13px;display:inline-block;margin-top:10px}.card a.watch-link{border:1px solid var(--line);border-radius:8px;padding:10px 14px;text-decoration:none;font-size:13px;color:var(--accent);white-space:nowrap}.card .catalogue-excerpt{color:var(--muted);font-size:14px;margin:10px 0;line-height:1.55}.source-links{display:flex;flex-direction:column;gap:8px;align-items:flex-start}.footer-grid{grid-template-columns:1.4fr 1fr}.search-options{flex-wrap:wrap;row-gap:12px}.footer-project>a{color:var(--accent)}
 @media(max-width:600px){.connection-brand{font-size:23px}.connection-brand small{font-size:8px}.church-link{font-size:11px}.hero h1{font-size:44px}.archive-notice{padding:18px}.footer-grid{grid-template-columns:1fr}.source-links{grid-column:2}.header-actions{gap:8px}}
+
+/* Preserved records contain a single text column, unlike public sermon cards. */
+.catalog-archive .calendar-intro{max-width:76ch}
+.catalog-archive h1{font-size:clamp(2.3rem,5vw,3.8rem);line-height:1.12;overflow-wrap:break-word}
+.catalog-archive .calendar-intro p{line-height:1.65}
+.archive-card{display:block;min-width:0;padding:26px 0;border-bottom:1px solid var(--line)}
+.archive-card>div{min-width:0;max-width:78ch;overflow-wrap:anywhere}
+.archive-card h3{font-size:1.12rem;line-height:1.5;margin:0 0 8px;color:var(--ink)}
+.archive-card .meta{line-height:1.6;margin:0 0 12px}
+.archive-card .catalogue-excerpt{font-size:15px;line-height:1.75;color:var(--muted);margin:0 0 14px;white-space:normal}
+.archive-card .source-link{display:inline-block;color:var(--accent);font-size:14px;line-height:1.6;text-underline-offset:3px}
+#archive-count{color:var(--muted);font-size:14px;line-height:1.6;margin-bottom:8px}
+@media(max-width:600px){.archive-card{padding:22px 0}.archive-card h3{font-size:1.05rem}.catalog-archive .calendar-intro{padding-top:24px}}

@@ -9,7 +9,7 @@ function render(){
   count.textContent=`${matches.length} of ${records.length} preserved records · recording unavailable`;
   results.replaceChildren();
   for(const e of matches){
-    const article=document.createElement('article');article.className='card';
+    const article=document.createElement('article');article.className='archive-card';
     const body=document.createElement('div');body.append(element('h3',e.title),element('p',e.date+(e.speaker?' · '+e.speaker:''),'meta'),element('p',e.description,'catalogue-excerpt'));
     const source=element('a','Original catalog listing ↗','source-link');source.href=e.link;source.target='_blank';source.rel='noopener';body.append(source);article.append(body);results.append(article);
   }

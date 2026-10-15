@@ -27,13 +27,13 @@ function render(rows, searching=false) {
     const body = node('div'); body.append(node('h3',e.title),node('div',searching ? `Sermon passage · ${clock(e.start)}–${clock(e.end)}` : 'Connection NYC Sermons', 'meta'));
     if(e.speaker) body.append(node('div', `Speaker: ${e.speaker}`, 'meta speaker-credit'));
     if(searching) {body.append(node('p',e.text,'excerpt'));if(e.transcript_source)body.append(node('p',e.transcript_source+' · timestamps follow the YouTube video','meta'));}
-    else { body.append(node('span',e.passages ? (e.transcript_source||'Transcript searchable') : 'Historical catalog · transcript unavailable','tag')); if(e.description) body.append(node('p',e.description.slice(0,260)+(e.description.length>260?'…':''),'catalogue-excerpt')); }
+    else { body.append(node('span',e.passages ? (e.transcript_source||'Transcript searchable') : 'YouTube video · transcript pending','tag')); if(e.description) body.append(node('p',e.description.slice(0,260)+(e.description.length>260?'…':''),'catalogue-excerpt')); }
     const play = node('button', searching ? `▶ Listen at ${clock(e.start)}` : '▶ Listen');
     play.addEventListener('click',()=>listen(e,searching ? e.start : 0,article.id));
     const sources = node('div',undefined,'source-links');
     if(e.youtube_url) { const watch = node('a',searching ? '▶ Watch at '+clock(e.start) : '▶ Watch sermon','watch-link'); watch.href=e.youtube_url+(searching?'&t='+Math.floor(e.start)+'s':''); watch.target='_blank'; watch.rel='noopener'; sources.append(watch); }
     if((searching || e.passages) && !e.youtube_url) sources.append(play);
-    else { const link=node('a','Original podcast listing ↗','source-link');link.href=e.link;link.target='_blank';link.rel='noopener';sources.append(link); }
+
     article.append(tile,body,sources); $('results').append(article);
   });
   window.ConnectionPlayer.refresh();
@@ -64,6 +64,7 @@ async function search() {
   try {
     const data = await api(`/api/sermons/search?q=${encodeURIComponent(q)}&mode=${mode}`,signal);
     if(signal.aborted) return;
+    data.results=data.results.filter(e=>library.some(row=>row.id===e.episode_id));
     $('status').textContent = `${data.results.length} passages · ${data.mode === 'hybrid' ? 'Words & meaning' : 'Keyword search'} · ${data.elapsed_ms} ms`;
     $('notice').textContent = data.notice || ''; $('notice').hidden = !data.notice;
     render(data.results,true);
@@ -88,12 +89,12 @@ $('browse').addEventListener('click',()=>{ browse(); $('query').focus(); });
 $('more').addEventListener('click',()=>{visible+=12;render(library.slice(0,visible));$('more').hidden=visible>=library.length;});
 (async()=>{
   try {
-    let stats, episodes;
+    let episodes;
     const catalog = await api('/assets/sermons/catalog.json');
-    try { [stats,episodes]=await Promise.all([api('/api/sermons/stats'),api('/api/sermons/episodes')]); }
-    catch { episodes=catalog; stats={episodes:catalog.length,indexed:0}; }
+    try { episodes=await api('/api/sermons/episodes'); }
+    catch { episodes=catalog; }
     const saved=new Map(catalog.map(e=>[e.id,e]));
-    library=episodes.map(e=>({...saved.get(e.id),...e})); $('coverage').textContent = `${stats.episodes} sermons · ${stats.indexed} with searchable transcripts`;
+    library=episodes.filter(e=>saved.has(e.id)).map(e=>({...saved.get(e.id),...e})); $('coverage').textContent = `${library.length} YouTube sermons · ${library.filter(e=>e.passages>0).length} with searchable transcripts`;
     const params = new URLSearchParams(location.search);
     if(params.has('q')) { $('query').value=params.get('q'); if(['keyword','smart','catalogue'].includes(params.get('mode'))) document.querySelector(`[value=${params.get('mode')}]`).checked=true; await search(); }
     else browse();

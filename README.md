@@ -181,3 +181,15 @@ is transactional and retry-safe. Keep credentials out of Git and frontend code.
 Meaning search requires a separately configured Vectorize index, indexed
 embeddings, and a server-side OpenAI key. Until configured, the app explicitly
 falls back to keyword search. These resources are not enabled in this version.
+
+### Public YouTube library and unlisted catalog
+
+The build now includes only records with a matched `youtube_url` in the public
+`/assets/sermons/catalog.json`. The library, calendar, counts, and rendered search
+results use that public set. All 438 records remain intact in the source catalog
+and D1; nothing is deleted. The other 410 records are searchable on the unlisted
+`/sermons/catalog-archive/` page, which is absent from site navigation and marked
+`noindex,nofollow,noarchive`. It is an unlisted maintenance reference, not an
+authenticated admin page. The underlying D1 read APIs continue to expose the full
+historical metadata catalog. Adding a verified YouTube URL and rebuilding moves
+an episode back into the public library automatically.

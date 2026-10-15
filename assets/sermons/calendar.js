@@ -25,7 +25,7 @@ function sermonCard(e) {
   const card=make('article',undefined,'calendar-sermon');
   card.dataset.sermonId=String(e.id); card.id=`sermon-${e.id}`; card.tabIndex=-1;
   const body=make('div');
-  body.append(make('h3',displayTitle(e)),make('p',e.passages ? (e.transcript_source||'Transcript searchable') : 'Historical catalog · transcript unavailable','meta'));
+  body.append(make('h3',displayTitle(e)),make('p',e.passages ? (e.transcript_source||'Transcript searchable') : 'YouTube video · transcript pending','meta'));
   if(e.speaker) body.append(make('p',`Speaker: ${e.speaker}`,'meta speaker-credit'));
   if(e.description) {
     const details=make('details'); details.append(make('summary','About this message'),make('p',e.description,'sermon-description')); body.append(details);
@@ -171,7 +171,7 @@ document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',(
   view=b.dataset.view;try{localStorage.setItem('connection-calendar-view',view);}catch{}render();}));
 (async()=>{
   try {
-    const catalogResponse=await fetch('/assets/sermons/catalog.json');if(!catalogResponse.ok)throw new Error();const catalog=await catalogResponse.json();const saved=new Map(catalog.map(e=>[e.id,e]));let response=await fetch('/api/sermons/episodes');const rows=response.ok?await response.json():catalog;episodes=rows.map(e=>{ e={...saved.get(e.id),...e};
+    const catalogResponse=await fetch('/assets/sermons/catalog.json');if(!catalogResponse.ok)throw new Error();const catalog=await catalogResponse.json();const saved=new Map(catalog.map(e=>[e.id,e]));let response=await fetch('/api/sermons/episodes');const rows=response.ok?await response.json():catalog;episodes=rows.filter(e=>saved.has(e.id)).map(e=>{ e={...saved.get(e.id),...e};
       const titleDate=e.title.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})\b/);
       const key=titleDate ? `${titleDate[3]}-${titleDate[1].padStart(2,'0')}-${titleDate[2].padStart(2,'0')}` : e.date;
       return {...e,date:fromKey(key) ? key : e.date};
@@ -179,7 +179,7 @@ document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',(
     episodes.forEach(e=>{if(!byDate.has(e.date))byDate.set(e.date,[]);byDate.get(e.date).push(e);});
     // Start on the latest available message unless the link specifies a date.
     if(!params.has('date') && episodes.length) { selected=episodes[0].date;focus=fromKey(selected); }
-    $('calendar-status').textContent=`${episodes.length} sermons in the archive · dates use sermon titles, with podcast publication as a fallback.`;
+    $('calendar-status').textContent=`${episodes.length} YouTube sermons in the library · dates use sermon titles, with podcast publication as a fallback.`;
     render();
   } catch { $('calendar-status').textContent='The calendar could not be loaded. Refresh to try again.'; }
 })();

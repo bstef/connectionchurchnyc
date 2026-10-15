@@ -1,6 +1,11 @@
-import { cp, mkdir, rm, writeFile } from 'node:fs/promises';
+import { cp, mkdir, rm, writeFile, readFile } from 'node:fs/promises';
 await rm('dist', {recursive:true, force:true});
 await mkdir('dist', {recursive:true});
 for (const path of ['index.html','assets','archive','sermons']) await cp(path, `dist/${path}`, {recursive:true});
+const catalog = JSON.parse(await readFile('assets/sermons/catalog.json','utf8'));
+const available = catalog.filter(e=>e.youtube_url);
+const archived = catalog.filter(e=>!e.youtube_url);
+await writeFile('dist/assets/sermons/catalog.json', JSON.stringify(available));
+await writeFile('dist/sermons/catalog-archive/catalog.json', JSON.stringify(archived));
 await writeFile('dist/_routes.json', JSON.stringify({version:1,include:['/api/sermons/*'],exclude:[]}));
-console.log('Built church site and Connection sermon archive. No transcription or AI calls.');
+console.log(`Built ${available.length} public YouTube sermons and ${archived.length} unlisted catalog records. No transcription or AI calls.`);

@@ -150,7 +150,16 @@
     .leaders-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 56px; }
     .leader-card { background: var(--warm-white); border: 1px solid var(--border); border-radius: 10px; padding: 36px 32px; transition: box-shadow 0.25s, transform 0.25s; }
     .leader-card:hover { box-shadow: 0 8px 32px rgba(28,25,21,0.08); transform: translateY(-2px); }
-    .leader-avatar { width: 64px; height: 64px; border-radius: 50%; background: linear-gradient(135deg, var(--button-bg), #1a4a60); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 1.4rem; color: white; font-weight: 600; margin-bottom: 20px; }
+    .leader-card { display: flex; flex-direction: column; min-width: 0; }
+    .leader-portraits { height: 176px; margin-bottom: 26px; }
+    .leader-portraits img { display: block; height: 176px; border-radius: 8px; border: 1px solid var(--border); object-fit: cover; }
+    .leader-portraits-couple img { width: min(100%, 205px); }
+    .leader-portraits-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; width: min(100%, 276px); }
+    .leader-portraits-pair img { width: 100%; object-position: 50% 42%; }
+    .leader-portrait { display: block; height: 176px; overflow: hidden; border-radius: 8px; border: 1px solid var(--border); }
+    .leader-portraits-pair .leader-portrait img { border: none; border-radius: 0; transform: scale(1.65); transform-origin: 50% 44%; }
+    .leader-card .leader-link { margin-top: auto; align-self: flex-start; }
+
     .leader-name { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
     .leader-role { font-size: 0.8rem; color: var(--blue); font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px; }
     .leader-card p { font-size: 0.9375rem; color: var(--muted); font-weight: 300; line-height: 1.75; margin-bottom: 16px; }
@@ -471,17 +480,23 @@
     </div>
     <div class="leaders-grid">
       <div class="leader-card reveal">
-        <div class="leader-avatar">DK</div>
-        <div class="leader-name">Pastor Daniel &amp; Kari McGhee</div>
+        <div class="leader-portraits leader-portraits-couple">
+          <img src="/assets/leaders/daniel-kari-mcghee.png" alt="Daniel and Kari McGhee" width="308" height="264" loading="lazy" decoding="async" />
+        </div>
+        <h3 class="leader-name">Pastor Daniel &amp; Kari McGhee</h3>
         <div class="leader-role">Founding Lead Pastors &middot; Connection Church NYC</div>
         <p>Daniel and Kari moved to Astoria in 2011 to plant Connection Church NYC and led it for over a decade. They are now serving with <strong>International Students, Inc. (ISI)</strong> &mdash; Daniel as <strong>NYC Area Director</strong> and Kari as <strong>NYC Hospitality Ministry Coordinator &amp; Campus Staff</strong> &mdash; reaching international students on campuses across New York City and Long Island.</p>
         <a href="https://internationalstudents.org/team/mcghees/" target="_blank" rel="noopener" class="leader-link">Learn about their ISI ministry &rarr;</a>
       </div>
       <div class="leader-card reveal">
-        <div class="leader-avatar">LM</div>
-        <div class="leader-name">Larry &amp; Lindsey Mayberry</div>
+        <div class="leader-portraits leader-portraits-pair">
+          <span class="leader-portrait"><img src="/assets/leaders/larry-mayberry.jpg" alt="Pastor Larry Mayberry" width="750" height="1125" loading="lazy" decoding="async" /></span>
+          <span class="leader-portrait"><img src="/assets/leaders/lindsey-mayberry.jpg" alt="Lindsey Mayberry" width="750" height="1125" loading="lazy" decoding="async" /></span>
+        </div>
+        <h3 class="leader-name">Larry &amp; Lindsey Mayberry</h3>
         <div class="leader-role">Co-Founders &middot; Lead Pastor, Queens Church</div>
         <p>The Mayberrys were present from Connection Church NYC&rsquo;s founding. In 2019, they were sent out to plant Queens Church in Woodside &mdash; answering a clear call to a neighborhood with few Gospel-centered churches. Queens Church continues to grow and baptize new disciples in NYC under their leadership.</p>
+        <a href="https://www.qns.church/team" target="_blank" rel="noopener" class="leader-link">Meet Larry &amp; Lindsey at Queens Church &rarr;</a>
       </div>
     </div>
     <div class="isi-callout reveal">
